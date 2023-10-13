@@ -1,3 +1,7 @@
+/**
+ * Accomplishes scatter gather io, reads from the standard input into a vector of buffers, and it writes out the contents of the vectors 
+ * to the standard output
+ * */
 #include <sys/uio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -17,6 +21,7 @@ int main()
     readv(STDIN_FILENO, vectors, NUM_OF_BUFFERS);
 
     writev(STDOUT_FILENO, vectors, NUM_OF_BUFFERS);
+
     for (size_t i = 0; i < NUM_OF_BUFFERS; ++i)
     {
         free(buffers[i]);
